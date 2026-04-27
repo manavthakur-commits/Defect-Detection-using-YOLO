@@ -1,24 +1,38 @@
-🏭 Industrial Product Defect Detection Dashboard
-A robust, structured Streamlit application designed for visual quality inspection in industrial manufacturing pipelines. This tool bridges the gap between raw computer vision models and operator-friendly quality control by leveraging YOLO object detection to identify, classify, and track defects in production imagery and video.
+# Industrial Product Defect Detection using YOLO + Streamlit
 
-Built with a focus on clean architecture and reproducible analytics, the dashboard allows engineers to move beyond treating AI as a black box by providing transparent, fine-grained control over inference parameters and comprehensive visual logs.
+This project provides a Streamlit dashboard for visual quality inspection of industrial products using YOLO object detection.
 
-✨ Key Features
-Multi-Modal Inspection Pipeline: Process and analyze both images (PNG, JPG, BMP) and video feeds (MP4, AVI, MOV) for automated defect detection.
+## Features
 
-Bring-Your-Own-Weights (BYOW): Seamlessly plug in custom-trained YOLO .pt weights specifically tailored to your factory's unique defect classes (e.g., scratches, dents, missing parts).
+- upload one or more product images or videos
+- run YOLO-based defect detection
+- review annotated outputs
+- inspect defect counts, confidence trends, and QC pass/fail status
+- plug in your own trained YOLO `.pt` weights
 
-Granular Inference Control: Take the engine apart and tune model mechanics directly from the UI by adjusting confidence thresholds, NMS IoU thresholds, and maximum detection limits.
+## Project Structure
 
-Automated Quality Control (QC): Configure pass/fail thresholds based on priority defect counts to instantly evaluate production quality.
+- `app.py` - Streamlit dashboard
+- `utils/inference.py` - YOLO inference helpers for images and videos
+- `utils/visualization.py` - dashboard metrics and detection table formatting
+- `requirements.txt` - Python dependencies
 
-Rich Analytics & Documentation: Generates interactive Plotly charts tracking defect distributions and confidence scores, alongside tabular data logging for rigorous, academic-grade review.
+## Setup
 
-🛠️ Architecture & Tech Stack
-This project prioritizes modularity, separating inference logic and visualization utilities to ensure a highly maintainable codebase.
+1. Create and activate a virtual environment.
+2. Install dependencies:
 
-Frontend & Analytics: Streamlit (>=1.44.0), Plotly (>=5.24.0), Pandas (>=2.2.0)
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-Computer Vision Engine: Ultralytics YOLO (>=8.3.0), OpenCV (>=4.10.0), Pillow (>=10.0.0)
+3. Start the Streamlit app:
 
-Data Validation: Pydantic (>=2.8.0) for rigorous validation of detection outputs
+   ```bash
+   streamlit run app.py
+   ```
+
+## Notes
+
+- For real defect detection, use a custom-trained YOLO model on your manufacturing dataset.
+- Built-in YOLO checkpoints are included as demo options and are not trained specifically for industrial defects.
